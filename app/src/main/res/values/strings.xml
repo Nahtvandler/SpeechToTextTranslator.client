@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SpeechToTextTranslator.client</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Рецепты</string>
+    <string name="title_notifications">Ингредиенты</string>
+<!--    <string name="title_activity_list">List</string>-->
+    <string name="title_activity_list2">List2Activity</string>
+<!--    <string name="title_activity_card">CardActivity</string>-->
+</resources>
