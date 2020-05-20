@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nahtvandler.SpeechToTextTranslator.client.rest.DTOs.ClientHttpDto;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView lastNameTextField;
 
     private TextView errorTextView;
+    private ProgressBar loginProgressBar;
 
     private List<TextView> registrationWidgets = new ArrayList<>();
 
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
         errorTextView = (TextView) findViewById(R.id.errorTextView);
         hideErrorMessage();
+
+        loginProgressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
+        loginProgressBar.setVisibility(View.GONE);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,11 +141,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeRegistrationMode(boolean status) {
         if (status) {
-            registrationButton.setText("confirm");
+            registrationButton.setText(getResources().getString(R.string.confirm_button));
             hideRegistrationWidgets(false);
             loginButton.setVisibility(View.GONE);
         } else {
-            registrationButton.setText("registration");
+            registrationButton.setText(getResources().getString(R.string.registration_button));
             hideRegistrationWidgets(true);
             loginButton.setVisibility(View.VISIBLE);
         }
@@ -173,11 +178,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doRegistration(ClientHttpDto request) {
+        loginProgressBar.setVisibility(View.VISIBLE);
         LoginApi loginApi = NetworkService.getInstance().getLoginApi();
         Call call = loginApi.registeration(request);
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
+                loginProgressBar.setVisibility(View.GONE);
                 if (HttpURLConnection.HTTP_OK != response.code()) {
                     showErrorMessage("network error");
                     return;
@@ -189,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call call, Throwable t) {
+                loginProgressBar.setVisibility(View.GONE);
                 showErrorMessage("network error");
                 t.printStackTrace();
             }
@@ -196,11 +204,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doLogin(String login, String password) {
+        loginProgressBar.setVisibility(View.VISIBLE);
         LoginApi loginApi = NetworkService.getInstance().getLoginApi();
         Call call = loginApi.login(login, password);
         call.enqueue(new Callback<LoginPair>() {
             @Override
             public void onResponse(@NonNull Call<LoginPair> call, @NonNull Response<LoginPair> response) {
+                loginProgressBar.setVisibility(View.GONE);
                 if (HttpURLConnection.HTTP_OK != response.code()) {
                     showErrorMessage("network error");
                     return;
@@ -221,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call call, Throwable t) {
+                loginProgressBar.setVisibility(View.GONE);
                 showErrorMessage("network error");
                 t.printStackTrace();
             }

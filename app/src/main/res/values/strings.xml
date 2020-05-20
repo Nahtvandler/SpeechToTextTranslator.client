@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">SpeechToTextTranslator.client</string>
-    <string name="title_home">Home</string>
+    <string name="create_room">Создать комнату</string>
+    <string name="find_room">Подключиться</string>
+    <string name="login_button">войти</string>
+    <string name="registration_button">регистрация</string>
+    <string name="confirm_button">подтвердить</string>
+    <string name="back_button">отмена</string>
+    <string name="firs_name">Имя:</string>
+    <string name="middle_name">Фамилия:</string>
+    <string name="last_name">Отчество:</string>
+    <string name="login">Логин:</string>
+    <string name="password">Пароль:</string>
+    <string name="confirm_password">Подтверждение пароля:</string>
+    <string name="workspace_activity_title">хз как назвать</string>
+
+
     <string name="title_dashboard">Рецепты</string>
     <string name="title_notifications">Ингредиенты</string>
 <!--    <string name="title_activity_list">List</string>-->

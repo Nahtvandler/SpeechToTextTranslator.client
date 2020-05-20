@@ -20,7 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WorkspaceActivity"></activity>
+        <activity android:name=".WorkspaceActivity"
+            android:theme="@style/CustomTheme"
+            android:label="@string/workspace_activity_title"></activity>
     </application>
 
 </manifest>
