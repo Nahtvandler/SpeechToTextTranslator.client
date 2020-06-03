@@ -23,6 +23,10 @@ android {
     }
 }
 
+//greendao {
+//    schemaVersion 1000
+//}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -37,4 +41,12 @@ dependencies {
     implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.1'
+//    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.github.NaikSoftware:StompProtocolAndroid:1.6.4'
+    implementation 'com.google.code.gson:gson:2.8.5'
+//    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }
